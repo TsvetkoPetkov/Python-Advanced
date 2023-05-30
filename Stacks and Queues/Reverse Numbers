@@ -1,0 +1,10 @@
+str_numbers = input().split()
+
+int_numbers = []
+
+for i in str_numbers:
+    num = int(i)
+    int_numbers.append(num)
+
+while int_numbers:
+    print(int_numbers.pop(), end=" ")
