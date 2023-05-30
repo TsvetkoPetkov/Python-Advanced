@@ -1,0 +1,18 @@
+from collections import deque
+
+nums = deque([int(x) for x in input().split()])
+rack_space = int(input())
+
+curr_space = rack_space
+
+racks_counter = 1
+
+for _ in nums.copy():
+    space = nums.pop()
+    if space <= curr_space:
+        curr_space -= space
+    else:
+        racks_counter += 1
+        curr_space = rack_space - space
+        
+print(racks_counter)
