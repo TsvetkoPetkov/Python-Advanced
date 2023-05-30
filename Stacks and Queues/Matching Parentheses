@@ -1,0 +1,13 @@
+math = input()
+
+par = []
+
+for inx in range(len(math)):
+    el = math[inx]
+
+    if el == "(":
+        par.append(inx)
+    elif el == ")":
+       start = par.pop()
+       end = inx
+       print(math[start:end+1])
