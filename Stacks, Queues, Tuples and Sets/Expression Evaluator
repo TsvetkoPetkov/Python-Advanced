@@ -1,0 +1,43 @@
+import math
+from collections import deque
+
+expression = deque(input().split())
+
+numbers = []
+
+while expression:
+    char = expression.popleft()
+
+    if char.isnumeric() or char.replace("-", "").isnumeric():
+        numbers.append(int(char))
+
+    elif char == "*":
+        result = 1
+        for el in numbers:
+            result *= el
+        numbers.clear()
+        numbers.append(result)
+
+    elif char == "+":
+        result = 0
+        for el in numbers:
+            result += el
+        numbers.clear()
+        numbers.append(result)
+
+    elif char == "-":
+        result = numbers[0]
+        for el in range(1, len(numbers)):
+            result -= numbers[el]
+        numbers.clear()
+        numbers.append(result)
+
+    elif char == "/":
+        result = numbers[0]
+        for el in range(1, len(numbers)):
+            result /= numbers[el]
+        numbers.clear()
+        numbers.append(math.floor(result))
+
+
+print(*numbers)
